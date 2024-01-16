@@ -129,7 +129,11 @@ on_exit() {
     dx-upload-all-outputs --parallel --wait-on-close || echo "No published files has been generated."
     # done
   fi
-  exit $ret
+
+  # For debug hold
+  exit 1
+
+  # exit $ret
 }
 
 get_resume_session_id() {

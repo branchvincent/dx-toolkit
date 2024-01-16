@@ -259,7 +259,8 @@ setup_workdir() {
     [[ -n $resume ]] || dx mkdir -p $DX_CACHEDIR/$NXF_UUID/work/
     NXF_WORK="dx://$DX_CACHEDIR/$NXF_UUID/work/"
   else
-    NXF_WORK="dx://$DX_WORKSPACE_ID:/work/"
+    NXF_WORK="/cuno/s3/npacunoscaletesting/$NXF_UUID/work/"
+    mkdir -p $NXF_WORK
   fi
 }
 
@@ -477,11 +478,11 @@ wait_for_terminate_or_retry() {
 
 # On exit, for the Nextflow task sub-jobs
 nf_task_exit() {
-  if [ -f .command.log ]; then
-    dx upload .command.log --path "${cmd_log_file}" --brief --wait --no-progress || true
-  else
-    >&2 echo "Missing Nextflow .command.log file"
-  fi
+  # if [ -f .command.log ]; then
+  #   dx upload .command.log --path "${cmd_log_file}" --brief --wait --no-progress || true
+  # else
+  #   >&2 echo "Missing Nextflow .command.log file"
+  # fi
 
   # exit_code should already be set in nf_task_entry(); default just in case
   # This is just for including as DX output; Nextflow internally uses .exitcode file
@@ -510,7 +511,7 @@ ep_nf_task_entry() {
   # capture the exit code
   trap nf_task_exit EXIT
   # remove the line in .command.run to disable printing env vars if debugging is on
-  dx cat "${cmd_launcher_file}" | sed 's/\[\[ $NXF_DEBUG > 0 ]] && nxf_env//' > .command.run
+  cat "${cmd_launcher_file}" | sed 's/\[\[ $NXF_DEBUG > 0 ]] && nxf_env//' > .command.run
   set +e
   # enable debugging mode
   [[ $NXF_DEBUG ]] && set -x

@@ -131,9 +131,9 @@ on_exit() {
   fi
 
   # For debug hold
-  exit 1
+  # exit 1
 
-  # exit $ret
+  exit $ret
 }
 
 get_resume_session_id() {

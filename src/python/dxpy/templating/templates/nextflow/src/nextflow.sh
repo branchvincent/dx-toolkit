@@ -514,9 +514,14 @@ ep_nf_task_entry() {
 
   # capture the exit code
   trap nf_task_exit EXIT
-  # remove the line in .command.run to disable printing env vars if debugging is on
-  echo "Will cat .command.run script"
+
+  # For debugging
+  echo ".command.run - Location"
+  echo "${cmd_launcher_file}"
+  echo ".command.run - Contents"
   cat "${cmd_launcher_file}"
+
+  # remove the line in .command.run to disable printing env vars if debugging is on
   cat "${cmd_launcher_file}" | sed 's/\[\[ $NXF_DEBUG > 0 ]] && nxf_env//' > .command.run
   set +e
   # enable debugging mode

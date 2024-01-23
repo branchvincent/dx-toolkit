@@ -503,8 +503,8 @@ nf_task_exit() {
 # Entry point for the Nextflow task sub-jobs
 ep_nf_task_entry() {
   echo "============================================================="
-  echo "==> Listing content of npacunoscaletesting bucket"
-  ls -l /cuno/s3/npacunoscaletesting
+  echo "==> Listing contents of NXF_WORK"
+  ls -lR $NXF_WORK
   echo "============================================================="
   echo
 

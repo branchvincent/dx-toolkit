@@ -298,7 +298,7 @@ ep_main() {
 
   echo "============================================================="
   echo "==> Listing content of npacunoscaletesting bucket"
-  ls -l /cuno/s3/npacunoscaletesting
+  ls -lR /cuno/s3/npacunoscaletesting
   echo "============================================================="
   echo
 
@@ -503,8 +503,8 @@ nf_task_exit() {
 # Entry point for the Nextflow task sub-jobs
 ep_nf_task_entry() {
   echo "============================================================="
-  echo "==> Listing contents of NXF_WORK"
-  ls -lR $NXF_WORK
+  echo "==> Listing content of npacunoscaletesting bucket"
+  ls -lR /cuno/s3/npacunoscaletesting
   echo "============================================================="
   echo
 

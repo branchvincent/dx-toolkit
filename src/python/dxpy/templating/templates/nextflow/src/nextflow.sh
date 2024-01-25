@@ -519,8 +519,6 @@ ep_nf_task_entry() {
   echo "Task - work dir contents"
   ls -lR
 
-  echo $CUNO_INTERCEPT_DOCKER
-
   # Run the task wrapper script
   bash .command.run > >(tee .command.log) 2>&1
 
@@ -533,9 +531,6 @@ setup_cunofs() {
   wget https://github.com/cunoFS/cunoFS/releases/download/v1.1.8/cuno-glibc-installer.run
   yes | sh cuno-glibc-installer.run 1>/dev/null
   dx cat project-GZxxGQ84g24xg8v710Kkx6Q4:file-GfPPGx84g24YyX08fgp62y5j | cuno creds activate
-
-  # https://cuno-cunofs.readthedocs-hosted.com/en/stable/user-guide-advanced.html#docker
-  export CUNO_INTERCEPT_DOCKER=1
 }
 
 main() {

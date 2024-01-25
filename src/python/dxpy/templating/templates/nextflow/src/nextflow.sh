@@ -519,6 +519,8 @@ ep_nf_task_entry() {
   echo "Task - work dir contents"
   ls -lR
 
+  echo $CUNO_INTERCEPT_DOCKER
+
   # Run the task wrapper script
   bash .command.run > >(tee .command.log) 2>&1
 

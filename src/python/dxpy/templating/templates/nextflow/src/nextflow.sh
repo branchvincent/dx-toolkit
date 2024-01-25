@@ -296,12 +296,6 @@ ep_main() {
     set -x
   fi
 
-  echo "============================================================="
-  echo "==> Listing content of npacunoscaletesting bucket"
-  ls -lR /cuno/s3/npacunoscaletesting
-  echo "============================================================="
-  echo
-
   # If cache is used, it will be stored in the project at
   DX_CACHEDIR=$DX_PROJECT_CONTEXT_ID:/.nextflow_cache_db
   NXF_PLUGINS_VERSION=1.7.0
@@ -502,12 +496,6 @@ nf_task_exit() {
 
 # Entry point for the Nextflow task sub-jobs
 ep_nf_task_entry() {
-  echo "============================================================="
-  echo "==> Listing content of npacunoscaletesting bucket"
-  ls -lR /cuno/s3/npacunoscaletesting
-  echo "============================================================="
-  echo
-
   CREDENTIALS="$HOME/docker_creds"
   dx download "$DX_WORKSPACE_ID:/dx_docker_creds" -o $CREDENTIALS --recursive --no-progress -f 2>/dev/null || true
   [[ -f $CREDENTIALS ]] && docker_registry_login  || echo "no docker credential available"

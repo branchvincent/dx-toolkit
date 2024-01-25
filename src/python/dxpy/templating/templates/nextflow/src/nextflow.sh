@@ -512,9 +512,11 @@ ep_nf_task_entry() {
   # remove the line in .command.run to disable printing env vars if debugging is on
   cat "${cmd_launcher_file}" | sed 's/\[\[ $NXF_DEBUG > 0 ]] && nxf_env//' > .command.run
   set +e
-  # enable debugging mode
-  [[ $NXF_DEBUG ]] && set -x
-  # run the task
+
+  # For debugging
+  set -x
+
+  # Run the task wrapper script
   bash .command.run > >(tee .command.log) 2>&1
 
   # For debugging

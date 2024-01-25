@@ -531,7 +531,7 @@ ep_nf_task_entry() {
 }
 
 setup_cunofs() {
-  wget https://github.com/cunoFS/cunoFS/releases/latest/download/cuno-glibc-installer.run
+  wget https://github.com/cunoFS/cunoFS/releases/download/v1.1.7/cuno-glibc-installer.run
   yes | sh cuno-glibc-installer.run 1>/dev/null
   dx cat project-GZxxGQ84g24xg8v710Kkx6Q4:file-GfPPGx84g24YyX08fgp62y5j | cuno creds activate
 }

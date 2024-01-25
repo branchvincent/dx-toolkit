@@ -516,6 +516,13 @@ ep_nf_task_entry() {
   [[ $NXF_DEBUG ]] && set -x
   # run the task
   bash .command.run > >(tee .command.log) 2>&1
+
+  # For debugging
+  echo "Task - current work dir"
+  pwd
+  echo "Task - work dir contents"
+  ls -lR
+
   export exit_code=$?
   dx set_properties ${DX_JOB_ID} nextflow_exit_code=$exit_code
   set -e

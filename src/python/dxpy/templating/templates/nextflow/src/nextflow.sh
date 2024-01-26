@@ -541,6 +541,7 @@ setup_cunofs() {
 
   # Set up cunoFS mount
   # https://cuno-cunofs.readthedocs-hosted.com/en/stable/user-guide-basic.html#user-guide-cunofs-mount
+  mkdir /cunofs
   cuno mount --root s3://npacunoscaletesting/ /cunofs
 }
 

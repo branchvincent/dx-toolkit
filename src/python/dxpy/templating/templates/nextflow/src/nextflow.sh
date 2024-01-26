@@ -263,7 +263,12 @@ setup_workdir() {
     [[ -n $resume ]] || dx mkdir -p $DX_CACHEDIR/$NXF_UUID/work/
     NXF_WORK="dx://$DX_CACHEDIR/$NXF_UUID/work/"
   else
-    NXF_WORK="/cuno/s3/npacunoscaletesting/$NXF_UUID/work/"
+    # Path if using cunoFS - direct interception
+    # NXF_WORK="/cuno/s3/npacunoscaletesting/$NXF_UUID/work/"
+
+    # Path if using cunoFS - mount
+    NXF_WORK="/cunofs/$NXF_UUID/work/"
+    mkdir -p $NXF_WORK
   fi
 }
 
